@@ -1,11 +1,9 @@
 package com.STLZ.modules.account.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -14,27 +12,30 @@ import java.util.Date;
 public class User {
 
     @Id
-    private String userId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int userId;
     @Column(name = "name")
-    private String Name;
+    private String name;
     @Column(name = "password")
     private String password;
     @Column(name = "tel")
-    private String Tel;
+    private String tel;
     @Column(name = "email")
-    private String Email;
+    private String email;
 
     @Column(name = "headIcon")
-    private String headIcon;
-
+    private  String headIcon;
     @Column(name = "createTime")
+    @JsonFormat(shape = JsonFormat.Shape.STRING , pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
+    @Column(name = "isMessage")
+    private boolean isMessage;
 
-    @Column(name = "messageNot")
-    private boolean MessageNot;
+    @Column(name = "typeId")
+    private int typeId;
 
-
-    @Column(name = "userType")
-    private String userType;
+//    @ManyToOne(cascade={CascadeType.MERGE,CascadeType.REFRESH})
+////    @JoinColumn(name="userType")
+//    private Type userType;
 
 }

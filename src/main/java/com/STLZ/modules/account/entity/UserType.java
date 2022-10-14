@@ -2,10 +2,8 @@ package com.STLZ.modules.account.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "user_type")
@@ -13,6 +11,7 @@ import javax.persistence.Table;
 public class UserType {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userTypeId;
     @Column(name = "userId")
     private int userId;
